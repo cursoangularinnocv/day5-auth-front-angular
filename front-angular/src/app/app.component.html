@@ -1,0 +1,26 @@
+<div *ngIf="!user">
+  <h1> Authentication Sample </h1>
+  <form>
+    <h2> Login or Signup </h2>
+    <label> Username </label>
+    <input type="text" [(ngModel)]="formInfo.username" name="username" />
+    <br>
+    <label> Password </label>
+    <input type="password" [(ngModel)]="formInfo.password" name="password" />
+
+    <div>
+      <button (click)="login()"> login </button>
+      <button (click)="signup()"> signup </button>
+    </div>
+  </form>
+  <p class="error"> {{ error }} </p>
+</div>
+
+<!-- app.component.html -->
+<div *ngIf="user">
+  <h2> You are now logged in as {{ user.username }}!! </h2>
+  <p> Here's the user object </p>
+  <pre> {{ user | json }} </pre>
+
+  <button (click)="logout()"> logout </button>
+</div>
