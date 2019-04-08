@@ -27,18 +27,19 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
-// Middleware Setup
-var whitelist = [
-  'http://localhost:3000'
-];
-var corsOptions = {
-  origin: function(origin, callback){
-      var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-      callback(null, originIsWhitelisted);
-  },
-  credentials: true
-};
-app.use(cors(corsOptions));
+// // Middleware Setup
+// var whitelist = [
+//   'http://localhost:3000'
+// ];
+// var corsOptions = {
+//   origin: function(origin, callback){
+//       var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+//       callback(null, originIsWhitelisted);
+//   },
+//   credentials: true
+// };
+// app.use(cors(corsOptions));
+app.use(cors());
 
 // Middleware Setup
 app.use(logger('dev'));
