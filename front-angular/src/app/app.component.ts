@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SessionService } from './session.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-root',
@@ -17,14 +18,15 @@ export class AppComponent {
   user: any;
   error: string;
 
-  constructor(private session: SessionService) { }
+  constructor(private session: SessionService, private router: Router) { }
 
   login() {
     this.session.login(this.formInfo)
       .then((user) => {
-        if (user.error) {
-          this.error = user.error
+        if (user["error"]) {
+          this.error = user["error"]
         } else {
+          // this.router.navigate(['/loggedin'])
           this.user = user
         }
       })
